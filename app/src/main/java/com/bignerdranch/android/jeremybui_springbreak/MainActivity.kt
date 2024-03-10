@@ -131,9 +131,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private fun openMapForLanguage(language: String) {
         val locations = vacationSpots[language] ?: return
         val (locationName, geoLocation) = locations[Random.nextInt(locations.size)]
+
         val intent = Intent(this, MapsActivity::class.java).apply {
             putExtra("GEO_LOCATION", geoLocation)
             putExtra("LOCATION_NAME", locationName)
+            putExtra("LANGUAGE", language)
         }
         startActivity(intent)
     }
